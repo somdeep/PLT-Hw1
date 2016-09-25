@@ -23,7 +23,11 @@ let rec oxford l =
 
 (* let b = oxfordlength ["somdeep";"work";"try"];;
 print_int b;; *)
-let c = oxford ["one";"two";];;
+let c = oxford ["one";"two";"three";"four"];;
 print_endline (c);;
+let d = oxford ["one"];;
+print_endline d;;
+let e = oxford ["one";"two"];;
+print_endline e;;
 (* let b = work;; *)
 (* print_int b;; *)

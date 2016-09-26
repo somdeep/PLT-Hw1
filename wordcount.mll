@@ -19,18 +19,31 @@ rule token = parse
 	;;
 
 
-	let rec count m ke =
-	match ke with
+	let rec count m l =
+	match l with
 	|[] -> m
 	|hd::tl -> count (dowork hd m) tl
 	;;
 
+	let wordcounts l = 
+	List.sort (fun (c1,_) (c2,_) ->
+		Pervasives.compare c2 c1) l
+	;;
 
-	let enlist mymap l = 
+
+	let enlist mymap l = 	
 	let m = count mymap l in
 	print_int (StringMap.find "work" m);
 	print_endline "";
-	print_int (StringMap.find "try" m);;
+	print_int (StringMap.find "try" m);
+	print_endline "";
+	print_int (StringMap.find "TRY" m);
+	(*let l1 = [];*)
+	fun l1 -> (StringMap.fold (fun s n l -> (s,n) :: l) m []);
+	(*List.iter (fun p -> print_int (fst p)) l1*)
+	print_int (fst (List.hd l1))
+	;;
+	
 
 	(*List.iter (fun a -> ignore(StringMap.add a 1 mymap)) l;
 	List.iter (fun a -> print_endline a) l;;*)

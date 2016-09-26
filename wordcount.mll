@@ -11,16 +11,26 @@ rule token = parse
 
 
 {
+	let dowork hd m =
+	if (StringMap.mem hd m) then 
+	StringMap.add hd ((StringMap.find hd m) + 1) m
+	else
+	StringMap.add hd 1 m
+	;;
+
+
 	let rec count m ke =
 	match ke with
 	|[] -> m
-	|hd::tl -> count (StringMap.add hd ( (StringMap.find hd m) + 1) m) tl
+	|hd::tl -> count (dowork hd m) tl
 	;;
 
 
 	let enlist mymap l = 
 	let m = count mymap l in
-	print_int (StringMap.find "hard" m);;
+	print_int (StringMap.find "work" m);
+	print_endline "";
+	print_int (StringMap.find "try" m);;
 
 	(*List.iter (fun a -> ignore(StringMap.add a 1 mymap)) l;
 	List.iter (fun a -> print_endline a) l;;*)

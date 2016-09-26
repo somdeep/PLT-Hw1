@@ -14,7 +14,7 @@ let oxfordlength a =
 
 let rec oxford l =
 	match l with 
-	| [] -> " "
+	| [] -> ""
 	| [a] -> a   
 	| [a;b] -> a ^ " and " ^b
 	| hd :: tl -> hd ^ ", " ^ oxford tl
@@ -27,7 +27,10 @@ let c = oxford ["one";"two";"three";"four"];;
 print_endline (c);;
 let d = oxford ["one"];;
 print_endline d;;
+let f = oxford [];;
+print_endline f;;
 let e = oxford ["one";"two"];;
 print_endline e;;
+
 (* let b = work;; *)
 (* print_int b;; *)
